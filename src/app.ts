@@ -8,12 +8,21 @@ import bodyParser from "body-parser";
 import { resolvers } from "./features";
 import * as dotenv from "dotenv";
 import typeDefs from "./graphql";
+import { AppDataSource } from "./config/data-source";
 
 dotenv.config();
 
 async function main(port: number | string) {
   const app = express();
   const httpServer = http.createServer(app);
+
+  AppDataSource.initialize()
+    .then(() => {
+      console.log("Db connection success!");
+    })
+    .catch(() => {
+      console.log("Db connection error?");
+    });
 
   const server = new ApolloServer({
     typeDefs,

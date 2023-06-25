@@ -1,5 +1,11 @@
 node_modules/
 dist/
+.vscode
+
 pnpm*
 yarn*
+
 .env
+
+*.sqlite3
+*.db3

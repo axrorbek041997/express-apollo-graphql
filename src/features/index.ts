@@ -1,5 +1,3 @@
-export const resolvers = {
-  Query: {
-    hello: (a: String) => "Hello, World!" + a,
-  },
-};
+import { userResolver } from "./user/resolvers";
+
+export const resolvers = [userResolver];
